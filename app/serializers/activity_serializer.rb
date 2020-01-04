@@ -1,3 +1,5 @@
 class ActivitySerializer < ActiveModel::Serializer
-  attributes :id, :favorite
+  attributes :favorite, :attending, :comment
+  belongs_to :user
+  belongs_to :event
 end
