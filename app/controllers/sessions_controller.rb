@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  #responding to get fetch request because we already have the user.id 
+  #responding to get fetch request because we already have the user.id
   def get_current_user
     if logged_in?
       render json: current_user
@@ -22,6 +22,14 @@ class SessionsController < ApplicationController
         error: "No user logged in"
       }
     end
+  end
+
+  #Logging out
+  def destroy
+    session.clear
+    render json: {
+      notice: "successfully logged out"
+    }, status: :ok
   end
 
 end
