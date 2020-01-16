@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :users
 
-  #get '/login', to: 'sessions#new'
+  post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/get_current_user', to: 'sessions#get_current_user'
