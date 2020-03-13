@@ -6,6 +6,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :organizer
       t.date :date
       t.time :time
+      t.string :city
+      t.string :state
       t.string :link
 
       t.timestamps
