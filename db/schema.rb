@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_184226) do
+ActiveRecord::Schema.define(version: 2020_01_04_184207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 2020_01_04_184226) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "event_id"
-    t.integer "meetup_id"
-    t.string "meetup_link"
     t.index ["event_id"], name: "index_activities_on_event_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
@@ -35,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_01_04_184226) do
     t.string "organizer"
     t.date "date"
     t.time "time"
+    t.string "city"
+    t.string "state"
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,11 +45,9 @@ ActiveRecord::Schema.define(version: 2020_01_04_184226) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.string "f_name"
-    t.string "l_name"
+    t.string "full_name"
     t.string "city"
     t.string "state"
-    t.integer "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
