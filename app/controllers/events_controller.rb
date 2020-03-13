@@ -17,11 +17,14 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = current_user.events.build(event_params)
-
+    @event = @current_user.events.build(event_params)
+    # binding.pry
     if @event.save
       render :show, status: :created, location: @event
     else
+      resp = {
+        error: @event.errors.full_messages.to_sentence
+      }
       render json: @event.errors, status: :unprocessable_entity
     end
   end
@@ -50,6 +53,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :time, :link, :organizer )
+      params.require(:event).permit(:title, :description, :date, :time, :link, :organizer, :user_id )
     end
 end
