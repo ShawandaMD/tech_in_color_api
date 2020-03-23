@@ -18,9 +18,9 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-    
+
     if @event.save
-      render :show, status: :created, location: @event
+      render json: @event, status: :created
     else
       resp = {
         error: @event.errors.full_messages.to_sentence
@@ -53,6 +53,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :time, :link, :city, :state, :user_id )
+      params.require(:event).permit(:title, :description, :date, :time, :link, :city, :state, :organizer, :user_id )
     end
 end
