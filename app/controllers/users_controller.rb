@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      render :show, status: :created, location: @user
+      render json: @user, status: :created
     else
       resp = {
         error: @user.errors.full_messages.to_sentence
